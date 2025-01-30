@@ -31,6 +31,8 @@ func (l *Lexer) readChar() {
 
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
+	
+	l.skipWhitespace()
 
 	switch l.ch {
 	case '=':
@@ -52,6 +54,20 @@ func (l *Lexer) NextToken() token.Token {
 	case 0:
 	tok.Literal = ""
 	tok.Type = token.EOF
+	
+	// define default branch, checks for indentifiers if l.char unrecognized
+	default:
+		if isLetter(l.ch) {
+			tok.Literal = l.readIdentifier()
+			tok.Type = token.LookupIdent(tok.Literal)
+			return tok
+		} else if isDigit(l.ch) {
+			tok.Type = token.INT
+			tok.Literal = l.readNumber()
+			return tok
+		} else {
+			tok = newToken(token.ILLEGAL, l.ch) // create our ILLEGAL tokens
+		}
 	}
 
 	l.readChar()
@@ -60,4 +76,43 @@ func (l *Lexer) NextToken() token.Token {
 
 func newToken(tokenType token.TokenType, ch byte) token.Token {
 	return token.Token{Type: tokenType, Literal: string(ch)}
+}
+
+// reads an identifier, then advances position until non-letter char
+func (l *Lexer) readIdentifier() string {
+	position := l.position
+	for isLetter(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position]
+}
+
+// helper function, adds '_' so we can use var names like foo_bar... 
+// NOTE: '!' and '?' are also possible
+func isLetter (ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
+}
+
+// eatWhitespace / consumeWhitespace
+func (l *Lexer) skipWhitespace() {
+	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
+		l.readChar()
+	}
+}
+
+// same as readIdentifier
+// very simplified.
+// TODO: floats? hex notation? octal notation?
+// for now, Monkey doesn't support this :)
+func (l *Lexer) readNumber() string {
+	position := l.position
+	for isDigit(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position]
+}
+
+// like isLetter, but returns whether passed byte is a Latin digit 0-9
+func isDigit(ch byte) bool {
+	return '0' <= ch && ch <= '9'
 }
