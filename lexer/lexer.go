@@ -110,7 +110,7 @@ func newToken(tokenType token.TokenType, ch byte) token.Token {
 	return token.Token{Type: tokenType, Literal: string(ch)}
 }
 
-// reads an identifier, then advances position until non-letter char
+// reads identifier, then advances position until non-letter char
 func (l *Lexer) readIdentifier() string {
 	position := l.position
 	for isLetter(l.ch) {
@@ -119,23 +119,20 @@ func (l *Lexer) readIdentifier() string {
 	return l.input[position:l.position]
 }
 
-// helper function, adds '_' so we can use var names like foo_bar... 
+// adds '_' so we can use var names like foo_bar... 
 // NOTE: '!' and '?' are also possible
 func isLetter (ch byte) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }
 
-// eatWhitespace / consumeWhitespace
 func (l *Lexer) skipWhitespace() {
 	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
 		l.readChar()
 	}
 }
 
-// same as readIdentifier
 // very simplified.
 // TODO: floats? hex notation? octal notation?
-// for now, Monkey doesn't support this :)
 func (l *Lexer) readNumber() string {
 	position := l.position
 	for isDigit(l.ch) {
@@ -144,7 +141,6 @@ func (l *Lexer) readNumber() string {
 	return l.input[position:l.position]
 }
 
-// like isLetter, but returns whether passed byte is a Latin digit 0-9
 func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'
 }
