@@ -1,6 +1,6 @@
 # Monkey Interpreter
 
-This project is an implementation of an interpreter for the Monkey programming language, following the book "Writing an Interpreter in Go" by Thorsten Ball. The goal is to learn about the inner workings of interpreters and gain hands-on experience by building one from scratch using Go.
+This project is an implementation of an interpreter for the Monkey programming language. The goal is to learn about the inner workings of interpreters and gain hands-on experience by building one from scratch using Go.
 
 ## Why Go?
 
@@ -33,6 +33,7 @@ Defines the Abstract Syntax Tree (AST) nodes and their associated interfaces.
 Implementation of the parser for constructing an AST from tokens.
 
 ## Getting Started
+
 To run the interpreter, ensure that you have Go installed on your system. Clone this repository and navigate to the project directory. Then, run the following command:
 
 ```bash
@@ -42,4 +43,7 @@ go run main.go
 This will start the REPL, and you can begin entering Monkey code. The interpreter will parse and evaluate the code, providing the results in the REPL.
 
 ## TODO
-- [ ] Implement parser
+[] Implement Parser
+
+## Acknowledgements
+This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang!
