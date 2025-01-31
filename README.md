@@ -11,9 +11,6 @@ This project is an implementation of an interpreter for the Monkey programming l
 
 ## TODO
 - [ ] Implement parser
-- [ ] Add support for more data types (e.g., floats, strings)
-- [ ] Enhance error handling and reporting
-- [ ] Implement a REPL (Read-Eval-Print Loop)
 
 ## Project Structure
 
