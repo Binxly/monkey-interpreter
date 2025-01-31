@@ -5,8 +5,8 @@ This project is an implementation of an interpreter for the Monkey programming l
 ## Why Go?
 
 - Closely maps to C (or other lower level languages)
-- Built-in tooling
 - Readable and easy to understand
+- Built-in tooling
 - Fast
 
 ## TODO
