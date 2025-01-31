@@ -34,15 +34,35 @@ func (l *Lexer) NextToken() token.Token {
 	
 	l.skipWhitespace()
 
+	// TODO: abstract away behaviour for two-char tokens into makeTwoCharToken method
 	switch l.ch {
 	case '=':
-	tok = newToken(token.ASSIGN, l.ch)
+	if l.peekChar() == '=' {
+		// NOTE: "...we save l.ch in a local variable before calling
+		// l.readChar() again. This way, we don't lose current char
+		// and can safely advance the lexer so it leaves the NextToken()
+		// with l.position and l.readPosition in the correct state."
+		ch := l.ch
+		l.readChar()
+		literal := string(ch) + string(l.ch)
+			tok = token.Token{Type: token.EQ, Literal: literal}
+	} else {
+		tok = newToken(token.ASSIGN, l.ch)
+	}
 	case '+':
 	tok = newToken(token.PLUS, l.ch)
 	case '-':
 	tok = newToken(token.MINUS, l.ch)
 	case '!':
-	tok = newToken(token.BANG, l.ch)
+	if l.peekChar() == '=' {
+		// NOTE:
+		ch := l.ch
+		l.readChar()
+		literal := string(ch) + string (l.ch)
+		tok = token.Token{Type: token.NOT_EQ, Literal: literal}
+	} else {
+		tok = newToken(token.BANG, l.ch)
+	}
 	case '/':
 	tok = newToken(token.SLASH, l.ch)
 	case '*':
@@ -127,4 +147,13 @@ func (l *Lexer) readNumber() string {
 // like isLetter, but returns whether passed byte is a Latin digit 0-9
 func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'
+}
+
+// similar to readChar, but doesn't increment pos and resPos
+func (l *Lexer) peekChar() byte {
+	if l.readPosition >= len(l.input) {
+		return 0
+	} else {
+		return l.input[l.readPosition]
+	}
 }
