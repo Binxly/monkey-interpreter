@@ -43,7 +43,7 @@ go run main.go
 This will start the REPL, and you can begin entering Monkey code. The interpreter will parse and evaluate the code, providing the results in the REPL.
 
 ## TODO
-[] Implement Parser
+[ ] Implement Parser
 
 ## Acknowledgements
 This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang!
