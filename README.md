@@ -2,6 +2,10 @@
 
 This project is an implementation of an interpreter for the Monkey programming language. The goal is to learn about the inner workings of interpreters and gain hands-on experience by building one from scratch using Go.
 
+## Getting Started
+
+To run the interpreter, ensure that you have Go installed on your system. Clone this repository and navigate to the project directory. Then, run the following command:
+
 ## Why Go?
 
 - Closely maps to C (or other lower level languages)
@@ -31,10 +35,6 @@ Defines the Abstract Syntax Tree (AST) nodes and their associated interfaces.
 
 ### `parser/parser.go`
 Implementation of the parser for constructing an AST from tokens.
-
-## Getting Started
-
-To run the interpreter, ensure that you have Go installed on your system. Clone this repository and navigate to the project directory. Then, run the following command:
 
 ```bash
 go run main.go
