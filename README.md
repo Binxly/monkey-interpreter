@@ -9,9 +9,6 @@ This project is an implementation of an interpreter for the Monkey programming l
 - Built-in tooling
 - Fast
 
-## TODO
-- [ ] Implement parser
-
 ## Project Structure
 
 ### `main.go`
@@ -43,3 +40,6 @@ go run main.go
 ```
 
 This will start the REPL, and you can begin entering Monkey code. The interpreter will parse and evaluate the code, providing the results in the REPL.
+
+## TODO
+- [ ] Implement parser
