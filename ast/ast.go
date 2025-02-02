@@ -30,17 +30,25 @@ func (p *Program) TokenLiteral() string {
 
 type LetStatement struct {
 	Token token.Token // the token.LET token
-	Name *Identifier // hold identifier of binding
-	Value Expression // expression tht produces value
+	Name  *Identifier // hold identifier of binding
+	Value Expression  // expression tht produces value
 }
 
-func (ls *LetStatement) statementNode()		{}
-func (ls *LetStatement) TokenLiteral() string	{ return ls.Token.Literal }
+func (ls *LetStatement) statementNode()       {}
+func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
 
 type Identifier struct {
 	Token token.Token // the token.IDENT token
 	Value string
 }
 
-func (i *Identifier) expressionNode()		{}
-func (i *Identifier) TokenLiteral() string	{ return i.Token.Literal }
+func (i *Identifier) expressionNode()      {}
+func (i *Identifier) TokenLiteral() string { return i.Token.Literal }
+
+type ReturnStatement struct {
+	Token       token.Token // 'return' token
+	ReturnValue Expression
+}
+
+func (rs *ReturnStatement) statementNode()       {}
+func (rs *ReturnStatement) TokenLiteral() string { return rs.Token.Literal }
