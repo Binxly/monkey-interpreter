@@ -19,18 +19,6 @@ const (
 	CALL        // myFunction(X)
 )
 
-// create token type associations
-var precedences = map[token.TokenType]int{
-	token.EQ:       EQUALS,
-	token.NOT_EQ:   EQUALS,
-	token.LT:       LESSGREATER,
-	token.GT:       LESSGREATER,
-	token.PLUS:     SUM,
-	token.MINUS:    SUM,
-	token.SLASH:    PRODUCT, // Higher precedence than SUM
-	token.ASTERISK: PRODUCT, // Higher precedence than SUM
-}
-
 type Parser struct {
 	l      *lexer.Lexer
 	errors []string
@@ -244,6 +232,18 @@ func (p *Parser) parsePrefixExpression() ast.Expression {
 	expression.Right = p.parseExpression(PREFIX)
 
 	return expression
+}
+
+// create token type associations
+var precedences = map[token.TokenType]int{
+	token.EQ:       EQUALS,
+	token.NOT_EQ:   EQUALS,
+	token.LT:       LESSGREATER,
+	token.GT:       LESSGREATER,
+	token.PLUS:     SUM,
+	token.MINUS:    SUM,
+	token.SLASH:    PRODUCT, // Higher precedence than SUM
+	token.ASTERISK: PRODUCT, // Higher precedence than SUM
 }
 
 // returns precedence of peekToken. if none, defaults LOWEST
