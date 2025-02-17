@@ -43,7 +43,8 @@ Defines the Abstract Syntax Tree (AST) nodes and their associated interfaces.
 Implementation of the parser for constructing an AST from tokens.
 
 ## TODO
-- [ ] Implement Parser
+- [ ] Clean up and extend Parser test suite
+- [ ] Parse grouped expressions
 
 ## Acknowledgements
-This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang!
+This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang and programming languages as a whole!
