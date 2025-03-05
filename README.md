@@ -44,7 +44,9 @@ Implementation of the parser for constructing an AST from tokens.
 
 ## TODO
 - [ ] Clean up and extend Parser test suite
-- [ ] Parse grouped expressions
+- [x] Parse grouped expressions
+- [x] Parse if statements
+- [ ] Parse function literals
 
 ## Acknowledgements
 This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang and programming languages as a whole!
