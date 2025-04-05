@@ -22,31 +22,40 @@ This will start the REPL, and you can begin entering Monkey code. The interprete
 ## Project Structure
 
 ### `main.go`
+
 The entry point of the interpreter.
 
 ### `repl/repl.go`
+
 Implementation of the REPL.
 
 ### `lexer/lexer.go`
+
 Defines the `Lexer` struct and its methods for tokenizing input.
 
 ### `lexer/lexer_test.go`
+
 Unit tests for the lexer.
 
 ### `token/token.go`
+
 Defines the `Token` struct and token-related constants.
 
 ### `ast/ast.go`
+
 Defines the Abstract Syntax Tree (AST) nodes and their associated interfaces.
 
 ### `parser/parser.go`
+
 Implementation of the parser for constructing an AST from tokens.
 
 ## TODO
-- [ ] Clean up and extend Parser test suite
+
 - [x] Parse grouped expressions
 - [x] Parse if statements
-- [ ] Parse function literals
+- [x] Parse function literals
+- [ ] Parse call expressions
 
 ## Acknowledgements
+
 This project follows the concepts taught in the book “Writing an Interpreter in Go” by Thorsten Ball. Thorsten's book serves as an excellent resource for learning about interpreters, and the subsequent project has been incredibly enlightening while also helping me become more familiar with Golang and programming languages as a whole!
